@@ -12,4 +12,6 @@ abstract class ColorConstants {
   static const Color youOwe = Colors.redAccent;
   static const Color youAreOwed = Colors.greenAccent;
 
+  static const Color scannerFocusBox = Colors.deepOrangeAccent;
+
 }

@@ -27,7 +27,7 @@ class ScannedLabel extends StatelessWidget {
         return Text(
           scannedBarcodes.first.displayValue ?? 'No display value.',
           overflow: TextOverflow.fade,
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white, fontSize: 20.0),
         );
       },
     );
