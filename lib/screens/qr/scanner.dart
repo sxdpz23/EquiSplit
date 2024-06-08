@@ -68,7 +68,7 @@ class _QRScannerState extends State<QRScanner> {
         height: height,
         width: width,
         decoration: BoxDecoration(
-          color: ColorConstants.pageBG.withAlpha(189),
+          color: ColorConstants.scannerBG.withAlpha(189),
         ),
       ),
     );
@@ -141,7 +141,7 @@ class _QRScannerState extends State<QRScanner> {
             onTap: () => Navigator.of(context).pop(),
             child: Container(
               decoration: BoxDecoration(
-                  color: ColorConstants.pageFG,
+                  color: ColorConstants.scannerFG,
                   borderRadius: BorderRadius.circular(20.0)),
               height: 50.0,
               padding: const EdgeInsets.all(10.0),
@@ -149,7 +149,7 @@ class _QRScannerState extends State<QRScanner> {
                 child: Text(
                   'BACK',
                   style: TextStyle(
-                    color: ColorConstants.pageTXT,
+                    color: ColorConstants.scannerTXT,
                     fontSize: 24,
                     letterSpacing: 2.5,
                     decoration: TextDecoration.none,
@@ -165,7 +165,7 @@ class _QRScannerState extends State<QRScanner> {
 
   @override
   Future<void> dispose() async {
-    super.dispose();
     await controller.dispose();
+    super.dispose();
   }
 }

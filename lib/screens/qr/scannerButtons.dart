@@ -1,3 +1,4 @@
+import 'package:equisplit/constants/colorConstants.dart';
 import 'package:equisplit/constants/helperFunctions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -69,11 +70,15 @@ class _ScannerButtonsState extends State<ScannerButtons> {
                   action: () async {
                     await widget.controller.toggleTorch();
                   },
+                  bgFAB: ColorConstants.scannerFG,
+                  textFAB: ColorConstants.scannerTXT,
                 ),
                 HelperFunctions.createFAB(
                   text: 'Pick from Camera Roll',
                   icon: CupertinoIcons.photo_on_rectangle,
                   action: () => _imagePickAction(context),
+                  bgFAB: ColorConstants.scannerFG,
+                  textFAB: ColorConstants.scannerTXT,
                 ),
                 availableCameras > 2
                     ? HelperFunctions.createFAB(
@@ -82,6 +87,8 @@ class _ScannerButtonsState extends State<ScannerButtons> {
                         action: () async {
                           await widget.controller.switchCamera();
                         },
+                        bgFAB: ColorConstants.scannerFG,
+                        textFAB: ColorConstants.scannerTXT,
                       )
                     : const SizedBox.shrink(),
                 // state.isInitialized || state.isRunning
