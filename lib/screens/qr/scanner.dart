@@ -32,15 +32,15 @@ class _QRScannerState extends State<QRScanner> {
 
     // listening to the stream for scanned data
     _processWhenScanned();
-
     super.initState();
   }
 
   _processWhenScanned() async {
     String scannedValue = "";
-    await controller.barcodes.first.then((value) =>
-        scannedValue = value.barcodes.single.displayValue.toString());
-    if (scannedValue.isNotEmpty)
+    if (!await controller.barcodes.isEmpty)
+      await controller.barcodes.first
+          .then((value) => scannedValue = value.barcodes.single.displayValue!);
+    if (scannedValue.isNotEmpty && mounted)
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -165,7 +165,7 @@ class _QRScannerState extends State<QRScanner> {
 
   @override
   Future<void> dispose() async {
-    await controller.dispose();
     super.dispose();
+    await controller.dispose();
   }
 }

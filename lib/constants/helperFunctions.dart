@@ -20,7 +20,7 @@ abstract class HelperFunctions {
         onPressed: action ??
             () {
               if (kDebugMode) {
-                print("FAB pressed :: $text");
+                print("FAB Pressed :: $text");
               }
             },
         icon: icon == null
@@ -38,9 +38,15 @@ abstract class HelperFunctions {
     );
   }
 
-  static Widget imageButton({String imagePath = Constants.userImage}) {
+  static Widget imageButton(
+      {String imagePath = Constants.userImage, Function()? action}) {
     return GestureDetector(
-      onTap: () => print("Profile Picture Tapped :: HomePage"),
+      onTap: () => action ?? 
+            () {
+              if (kDebugMode) {
+                print("FAB Pressed :: Picture | HomePage");
+              }
+            },
       child: CircleAvatar(
         radius: 25.0,
         backgroundImage: NetworkImage(imagePath),

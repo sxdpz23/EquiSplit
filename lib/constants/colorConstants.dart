@@ -12,7 +12,7 @@ abstract class ColorConstants {
   static const Color pageFG = Color(0xff0b19de);
   static const Color pageFGTXT = Colors.white;
 
-  static const Color youOwe = Colors.redAccent;
+  static const Color youOwe = Colors.deepOrangeAccent;
   static const Color youAreOwed = Colors.greenAccent;
 
   static const Color scannerFocusBox = Colors.white;

@@ -1,8 +1,8 @@
-import 'package:equisplit/constants/helperFunctions.dart';
-import 'package:equisplit/screens/home/home.dart';
-import 'package:equisplit/screens/qr/scanner.dart';
 import 'package:flutter/material.dart';
 
+import 'package:equisplit/screens/home/home.dart';
+import 'package:equisplit/screens/qr/scanner.dart';
+import 'package:equisplit/constants/helperFunctions.dart';
 import 'package:equisplit/constants/constants.dart';
 import 'package:equisplit/constants/colorConstants.dart';
 
@@ -20,8 +20,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const Wrapper(),
         '/home': (context) => const Home(),
-        '/qr': (context) => const QRScanner(),
-        '/qr/scan': (context) => const QRScanner()
+        '/qr/scan': (context) => const QRScanner(),
+        // '/qr': (context) => const DisplayQRScanner(),
+        // '/profile': (context) => const Profile(),
+        // '/group/create': (context) => const CreateGroup(),
       },
       debugShowCheckedModeBanner: false,
       // home: Wrapper(),

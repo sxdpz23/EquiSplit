@@ -12,10 +12,11 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
-  flutter_vector_icons: 2.0.0
-  image_picker: ^1.1.2
-  qr_flutter: ^4.1.0
-  mobile_scanner: ^5.1.1
+  flutter_vector_icons: 2.0.0 #helps to get more options for icons
+  image_picker: ^1.1.2  #helps to pick image from gallery
+  qr_flutter: ^4.1.0    #helps to generate qr code
+  mobile_scanner: ^5.1.1  #helps to scan a qr code and get its data
+  shape_of_view_null_safe: ^3.0.0   #helps in creating a custom shape
 
 dev_dependencies:
   flutter_test:
