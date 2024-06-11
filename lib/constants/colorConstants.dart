@@ -19,4 +19,11 @@ abstract class ColorConstants {
   static const Color scannerTXT = Colors.white;
   static const Color scannerFG = Color(0xff0b19de);
   static const Color scannerBG = Colors.black;
+
+  /// Group Categories colors
+  static const Color gcCouples = Colors.pinkAccent;
+  static const Color gcHome = Colors.lightBlueAccent;
+  static const Color gcTrip = Colors.teal;
+  static const Color gcBusiness = Colors.orange;
+  static const Color gcOthers = Colors.grey;
 }

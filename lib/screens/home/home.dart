@@ -1,3 +1,5 @@
+import 'package:equisplit/constants/dummy.dart';
+import 'package:equisplit/models/groupCategories.dart';
 import 'package:equisplit/screens/group/group.dart';
 import 'package:equisplit/screens/home/homeTile.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,7 +9,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'fab.dart';
 import 'package:equisplit/constants/constants.dart';
 import 'package:equisplit/constants/colorConstants.dart';
-import 'package:equisplit/constants/filters.dart';
+import 'package:equisplit/models/filters.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,27 +21,27 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   bool youOwe = false;
   double amount = 0;
-  List<String>? groups;
+  List? groups;
   CategoryFilters? filter;
   int counter = 0;
 
   @override
   void initState() {
     super.initState();
-    amount = 1027532.23;
+    amount = 384835.65;
     if (amount > 0) youOwe = true;
     filter ??= CategoryFilters(filters: Filters.allGroups);
     groups = filter!.mainCategory() == "Groups"
-        ? ["wow", "meow", "bhow", "bow wow"]
-        : ["wow", "bhow", "bow wow"];
+        ? DummyData.groupsSynced
+        : DummyData.groupsSynced2;
   }
 
   void _settingValues() {
     filter = CategoryFilters(filters: Filters.values[counter++]);
 
     groups = filter!.mainCategory() == "Groups"
-        ? ["wow", "meow", "bhow", "bow wow"]
-        : ["wow", "bhow", "bow wow"];
+        ? DummyData.groupsSynced
+        : DummyData.groupsSynced2;
 
     if (counter == Filters.values.length - 1) counter = 0;
   }
@@ -102,76 +104,78 @@ class _HomeState extends State<Home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: ColorConstants.pageTXT,
-                        borderRadius: BorderRadius.circular(20.0),
-                        // boxShadow: const [
-                        //   BoxShadow(
-                        //     color: Colors.black12,
-                        //     blurRadius: 10,
-                        //   )
-                        // ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: RichText(
-                          textAlign: TextAlign.left,
-                          text: TextSpan(
-                            style: const TextStyle(
-                              color: ColorConstants.pageBG,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            text: "Total Dues Amount\n",
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: "₹ $amount",
-                                style: TextStyle(
-                                  color: youOwe
-                                      ? ColorConstants.youOwe
-                                      : ColorConstants.youAreOwed,
-                                  fontSize: 30,
-                                  letterSpacing: 1.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
                     Flexible(
-                      child: AnimatedSwitcher(
-                        duration: Durations.medium2,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: ColorConstants.pageTXT,
+                          borderRadius: BorderRadius.circular(20.0),
+                          // boxShadow: const [
+                          //   BoxShadow(
+                          //     color: Colors.black12,
+                          //     blurRadius: 10,
+                          //   )
+                          // ],
+                        ),
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 10.0, left: 10.0, right: 10.0),
-                          child: GestureDetector(
-                            onTap: () => setState(() => _settingValues()),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: <Widget>[
-                                Icon(filter!.mainCategory() == 'Groups'
-                                    ? Icons.group
-                                    : Icons.person),
-                                Text(
-                                  filter!.mainCategory(),
-                                  textAlign: TextAlign.end,
-                                  style: const TextStyle(
-                                    color: ColorConstants.pageTXT,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 28.0,
-                                  ),
-                                ),
-                                Text(
-                                  filter!.description(),
-                                  style: const TextStyle(
-                                    color: ColorConstants.pageTXT,
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 12.0,
+                          padding: const EdgeInsets.all(20.0),
+                          child: RichText(
+                            textAlign: TextAlign.left,
+                            text: TextSpan(
+                              style: const TextStyle(
+                                color: ColorConstants.pageBG,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              text: "Total Dues Amount\n",
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: "₹ $amount",
+                                  style: TextStyle(
+                                    overflow: TextOverflow.ellipsis,
+                                    color: youOwe
+                                        ? ColorConstants.youOwe
+                                        : ColorConstants.youAreOwed,
+                                    fontSize: 30,
+                                    letterSpacing: 1.0,
                                   ),
                                 ),
                               ],
                             ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    AnimatedSwitcher(
+                      duration: Durations.medium2,
+                      child: Container(
+                        width: totalSize.width * 0.3,
+                        margin: const EdgeInsets.only(
+                            top: 10.0, left: 10.0, right: 10.0),
+                        child: GestureDetector(
+                          onTap: () => setState(() => _settingValues()),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              Icon(filter!.mainCategory() == 'Groups'
+                                  ? Icons.group
+                                  : Icons.person),
+                              Text(
+                                filter!.mainCategory(),
+                                textAlign: TextAlign.end,
+                                style: const TextStyle(
+                                  color: ColorConstants.pageTXT,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 28.0,
+                                ),
+                              ),
+                              Text(
+                                filter!.description(),
+                                style: const TextStyle(
+                                  color: ColorConstants.pageTXT,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 12.0,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -222,11 +226,21 @@ class _HomeState extends State<Home> {
                             child: GestureDetector(
                               onTap: () => Navigator.of(context).push(
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        Group(heroTag: heroTag)),
+                                  builder: (context) => Group(
+                                    groups![index],
+                                    heroTag: heroTag,
+                                    backImg: index == 1
+                                        ? Constants.dummyGroupImage
+                                        : null,
+                                  ),
+                                ),
                               ),
                               child: HomeTile(
+                                groups![index],
                                 tileHeight: totalSize.height * 0.2,
+                                backImg: index == 1
+                                    ? Constants.dummyGroupImage
+                                    : null,
                               ),
                             ),
                           );

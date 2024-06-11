@@ -28,19 +28,20 @@ class _ScannerButtonsState extends State<ScannerButtons> {
     final BarcodeCapture? barcodes =
         await widget.controller.analyzeImage(image.path);
 
-    if (!context.mounted) return;
-
-    final SnackBar snackbar = barcodes != null
-        ? const SnackBar(
-            content: Text('Barcode found!'),
-            backgroundColor: Colors.green,
-          )
-        : const SnackBar(
-            content: Text('No barcode found!'),
-            backgroundColor: Colors.red,
+    if (!context.mounted)
+      return;
+    else
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CupertinoAlertDialog(
+            title: const Text("Success"),
+            content: Text(barcodes != null
+                ? barcodes.barcodes.single.displayValue!
+                : "Unreadable QR!!"),
           );
-
-    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+        },
+      );
   }
 
   @override
