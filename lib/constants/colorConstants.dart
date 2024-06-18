@@ -26,4 +26,10 @@ abstract class ColorConstants {
   static const Color gcTrip = Colors.teal;
   static const Color gcBusiness = Colors.orange;
   static const Color gcOthers = Colors.grey;
+
+  /// QR Scanner Categories colors
+  static const Color qcFriend = Colors.indigoAccent;
+  static const Color qcGroup = Colors.transparent;
+  static const Color qcPayments = Colors.brown;
+  static const Color qcUnknown = Colors.redAccent;
 }

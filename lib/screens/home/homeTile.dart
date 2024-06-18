@@ -1,9 +1,6 @@
 import 'package:equisplit/constants/colorConstants.dart';
-import 'package:equisplit/constants/constants.dart';
 import 'package:equisplit/models/groupCategories.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shape_of_view_null_safe/shape_of_view_null_safe.dart';
 
 class HomeTile extends StatelessWidget {
   const HomeTile(

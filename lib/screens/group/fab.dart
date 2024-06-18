@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
-import 'package:equisplit/constants/helperFunctions.dart';
-
 class GroupFaButtons extends StatelessWidget {
   const GroupFaButtons(
       {super.key,

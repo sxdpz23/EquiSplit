@@ -23,4 +23,9 @@ abstract class Constants {
 
   /// Scanner Page
   static const int darkValueForScannerNegative = 189;
+
+  /// Scanned Card Labels
+  static const String slGroup = "Join Group";
+  static const String slFriend = "Add Friend";
+  static const String slPayment = "Pay";
 }

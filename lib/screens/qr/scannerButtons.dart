@@ -30,17 +30,10 @@ class _ScannerButtonsState extends State<ScannerButtons> {
 
     if (!context.mounted)
       return;
-    else
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return CupertinoAlertDialog(
-            title: const Text("Success"),
-            content: Text(barcodes != null
-                ? barcodes.barcodes.single.displayValue!
-                : "Unreadable QR!!"),
-          );
-        },
+    else if (barcodes != null)
+      HelperFunctions.triggerDialogAfterScanning(
+        context,
+        scannedValue: barcodes.barcodes.single.displayValue!,
       );
   }
 

@@ -1,7 +1,10 @@
 import 'package:equisplit/constants/colorConstants.dart';
+import 'package:equisplit/constants/helperFunctions.dart';
+import 'package:equisplit/models/qrCategories.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'scannerError.dart';
 import 'scannerButtons.dart';
@@ -41,14 +44,9 @@ class _QRScannerState extends State<QRScanner> {
       await controller.barcodes.first
           .then((value) => scannedValue = value.barcodes.single.displayValue!);
     if (scannedValue.isNotEmpty && mounted)
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return CupertinoAlertDialog(
-            title: const Text("Success"),
-            content: Text(scannedValue),
-          );
-        },
+      HelperFunctions.triggerDialogAfterScanning(
+        context,
+        scannedValue: scannedValue,
       );
   }
 

@@ -43,7 +43,7 @@ class HomeFaButtons extends StatelessWidget {
                 ),
 
                 /// Right Outermost Bottom FAB
-                HelperFunctions.imageButton(),
+                HelperFunctions.imageButton(border: 5.0),
               ],
             ),
           ),

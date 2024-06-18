@@ -28,12 +28,12 @@ class Group extends StatelessWidget {
           height: totalSize.height * 0.1,
           width: totalSize.width,
           alignment: Alignment.center,
-          child: const Padding(
-            padding: EdgeInsets.only(bottom: 20.0, left: 30.0),
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 20.0, left: 30.0),
             child: GroupFaButtons(
               fabBG: ColorConstants.pageTXT,
               fabTXT: ColorConstants.pageFGTXT,
-              fabHighlight: Colors.blue,
+              fabHighlight: categoryData.color(),
             ),
           ),
         ),
@@ -93,6 +93,23 @@ class Group extends StatelessWidget {
                   child: Center(
                     child: Icon(
                       CupertinoIcons.back,
+                      color: ColorConstants.pageBG,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: MediaQuery.of(context).padding.top + 20.0,
+              right: 10.0,
+              child: GestureDetector(
+                onTap: () => print("Button Tapped :: Settings | Group Page"),
+                child: const CircleAvatar(
+                  radius: 25.0,
+                  backgroundColor: Colors.transparent,
+                  child: Center(
+                    child: Icon(
+                      Icons.settings,
                       color: ColorConstants.pageBG,
                     ),
                   ),
