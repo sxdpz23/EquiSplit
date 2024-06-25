@@ -121,20 +121,24 @@ class _ScannedDialogState extends State<ScannedDialog> {
                               ),
                             ),
                           ),
-                          Container(
-                            width: tileWidth * 0.4,
-                            padding: const EdgeInsets.all(10.0),
-                            decoration: BoxDecoration(
-                              color: ColorConstants.pageBG,
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            child: Center(
-                              child: Text(
-                                widget.qrCategoriesData.label(),
-                                style: TextStyle(
-                                  color: mainTileColor,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 18.0,
+                          GestureDetector(
+                            onTap: () => print(
+                                " Button Tapped :: ${widget.qrCategoriesData.label()}"),
+                            child: Container(
+                              width: tileWidth * 0.4,
+                              padding: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                color: ColorConstants.pageBG,
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  widget.qrCategoriesData.label(),
+                                  style: TextStyle(
+                                    color: mainTileColor,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 18.0,
+                                  ),
                                 ),
                               ),
                             ),
@@ -142,7 +146,41 @@ class _ScannedDialogState extends State<ScannedDialog> {
                         ],
                       ),
                     )
-                  : const SizedBox(),
+                  : Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            width: tileWidth * 0.9,
+                            child: Text(
+                              widget.qrCategoriesData.label(),
+                              textAlign: TextAlign.center,
+                              softWrap: true,
+                              style: const TextStyle(
+                                color: ColorConstants.pageBG,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 2.0,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10.0),
+                          SizedBox(
+                            width: tileWidth * 0.9,
+                            child: Text(
+                              widget.qrCategoriesData.scannedValue,
+                              textAlign: TextAlign.center,
+                              softWrap: true,
+                              style: const TextStyle(
+                                color: ColorConstants.pageBG,
+                                fontSize: 22,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
             ],
           ),
         ),

@@ -229,6 +229,7 @@ class _HomeState extends State<Home> {
                                   builder: (context) => Group(
                                     groups![index],
                                     heroTag: heroTag,
+                                    name: DummyData.groupName,
                                     backImg: index == 1
                                         ? Constants.dummyGroupImage
                                         : null,

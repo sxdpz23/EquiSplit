@@ -2,14 +2,15 @@ import 'package:equisplit/constants/colorConstants.dart';
 import 'package:equisplit/models/groupCategories.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 
 import 'fab.dart';
 
 class Group extends StatelessWidget {
-  const Group(this.category, {super.key, required this.heroTag, this.backImg});
+  const Group(this.category,
+      {super.key, required this.heroTag, this.backImg, required this.name});
 
-  final String heroTag;
+  final String heroTag, name;
   final String? backImg;
   final GroupCategories category;
 
@@ -41,43 +42,67 @@ class Group extends StatelessWidget {
           children: <Widget>[
             /// Actual  View
             Positioned.fill(
-              child: SingleChildScrollView(
+              child: CustomScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      height: topPadding,
-                      width: totalSize.width,
-                      color: categoryData.color(),
-                    ),
-                    Container(
-                      height: totalSize.height * 0.3,
-                      width: totalSize.width,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.vertical(
-                            bottom: Radius.circular(20)),
-                        color: categoryData.color(),
-                        image: backImg == null
-                            ? null
-                            : DecorationImage(
-                                fit: BoxFit.cover,
-                                image: NetworkImage(
-                                  backImg!,
+                slivers: <Widget>[
+                  SliverAppBar(
+                    automaticallyImplyLeading: false,
+                    pinned: true,
+                    backgroundColor: categoryData.color(),
+                    expandedHeight: totalSize.height * 0.35,
+                    flexibleSpace: FlexibleSpaceBar(
+                      background: Container(
+                        // height: totalSize.height * 0.3,
+                        width: totalSize.width,
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.vertical(
+                              bottom: Radius.circular(20)),
+                          color: categoryData.color(),
+                          image: backImg == null
+                              ? null
+                              : DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                    backImg!,
+                                  ),
+                                ),
+                        ),
+                        child: backImg != null
+                            ? const SizedBox()
+                            : Center(
+                                child: Icon(
+                                  categoryData.icon(),
+                                  color: ColorConstants.pageBG,
+                                  size: totalSize.width * 0.2,
                                 ),
                               ),
                       ),
-                      child: backImg != null
-                          ? const SizedBox()
-                          : Center(
-                              child: Icon(
-                                categoryData.icon(),
-                                color: ColorConstants.pageBG,
-                                size: totalSize.width * 0.2,
-                              ),
-                            ),
                     ),
-                  ],
-                ),
+                    bottom: PreferredSize(
+                      preferredSize: Size.fromHeight(10),
+                      child: Container(
+                        color: ColorConstants.pageBG,
+                        width: totalSize.width,
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.only(top: 20.0),
+                        child: Text(
+                          name,
+                          style: const TextStyle(
+                            color: ColorConstants.pageTXT,
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: totalSize.height,
+                      width: totalSize.width,
+                    ),
+                  ),
+                ],
               ),
             ),
 

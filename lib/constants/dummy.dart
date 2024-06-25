@@ -15,4 +15,8 @@ abstract class DummyData {
     GroupCategories.home,
     GroupCategories.business,
   ];
+  
+  static const String groupName = "Godrej K2B-1003";
+  static const double dueAmount = 245.00;
+  static const int groupMembersCount = 3;
 }

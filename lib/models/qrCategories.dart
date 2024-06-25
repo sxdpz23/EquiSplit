@@ -86,7 +86,7 @@ class QrCategoriesData {
         return Constants.slPayment;
       case QrCategories.unknown:
       default:
-        return "";
+        return "???";
     }
   }
 

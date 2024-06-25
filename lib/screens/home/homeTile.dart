@@ -1,4 +1,5 @@
 import 'package:equisplit/constants/colorConstants.dart';
+import 'package:equisplit/constants/dummy.dart';
 import 'package:equisplit/models/groupCategories.dart';
 import 'package:flutter/material.dart';
 
@@ -13,10 +14,6 @@ class HomeTile extends StatelessWidget {
   final double tileHeight;
   final String? backImg;
   final GroupCategories groupCategory;
-
-  final String groupName = "Godrej K2B-1003";
-  final double dueAmount = 245.00;
-  final int groupMembersCount = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -90,11 +87,11 @@ class HomeTile extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text(
-                          groupName,
+                        const Text(
+                          DummyData.groupName,
                           textAlign: TextAlign.left,
                           softWrap: true,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: ColorConstants.pageBG,
                             fontSize: 24,
                             fontStyle: FontStyle.italic,
@@ -108,7 +105,7 @@ class HomeTile extends StatelessWidget {
                             ),
                             const SizedBox(width: 5.0),
                             Text(
-                              groupMembersCount.toString(),
+                              DummyData.groupMembersCount.toString(),
                               style: const TextStyle(
                                 fontSize: 16.0,
                                 color: ColorConstants.pageBG,
@@ -120,15 +117,15 @@ class HomeTile extends StatelessWidget {
                     ),
                     RichText(
                       maxLines: 2,
-                      text: TextSpan(
+                      text: const TextSpan(
                           text: "You owe\n",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: ColorConstants.pageBG,
                           ),
                           children: <TextSpan>[
                             TextSpan(
-                                text: "₹ " + dueAmount.toString(),
-                                style: const TextStyle(
+                                text: "₹ ${DummyData.dueAmount}",
+                                style: TextStyle(
                                   fontSize: 24.0,
                                 ))
                           ]),
