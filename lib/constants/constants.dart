@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+
 abstract class Constants {
   static bool darkModeEnabled = false;
 
@@ -28,4 +31,14 @@ abstract class Constants {
   static const String slGroup = "Join Group";
   static const String slFriend = "Add Friend";
   static const String slPayment = "Pay";
+
+  static const Duration allDuration = Durations.medium2;
+
+  /// Add Categories on fab
+  static const List<String> tooltips = ["Group", "Expense", "Friend"];
+  static const List<IconData> icons = [
+    Icons.group,
+    FontAwesome.rupee,
+    Icons.person
+  ];
 }

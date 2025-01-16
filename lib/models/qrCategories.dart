@@ -55,6 +55,20 @@ class QrCategoriesData {
     return _getValueFromKey(upiKey);
   }
 
+  String? currency() {
+    if (category != QrCategories.upi) return null;
+
+    const String currencyKey = "cu";
+    return _getValueFromKey(currencyKey);
+  }
+
+  String? merchantName() {
+    if (category != QrCategories.upi) return null;
+
+    const String merchantNameKey = "tn";
+    return _getValueFromKey(merchantNameKey);
+  }
+
   String? id() {
     if (category == QrCategories.upi || category == QrCategories.unknown)
       return null;
@@ -92,6 +106,16 @@ class QrCategoriesData {
 
   @override
   String toString() {
-    return "Category :: ${category.name}\nName :: ${name()}\nId :: ${id()}\nUPI :: ${upiID()}\nAmount :: ${amount()}\n";
+    StringBuffer stringBuffer = StringBuffer();
+    stringBuffer.writeAll([
+      "Category :: ${category.name}",
+      "Name :: ${name()}",
+      "Id :: ${id()}",
+      "UPI :: ${upiID()}",
+      "Amount :: ${amount()}",
+      "Currency :: ${currency()}",
+      "MerchantName :: ${merchantName()}"
+    ], "\n");
+    return stringBuffer.toString();
   }
 }

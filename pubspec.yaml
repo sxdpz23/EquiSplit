@@ -12,19 +12,20 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
-  flutter_vector_icons: 2.0.0 #helps to get more options for icons
+  flutter_vector_icons: 2.0.0   #helps to get more options for icons
   image_picker: ^1.1.2  #helps to pick image from gallery
   qr_flutter: ^4.1.0    #helps to generate qr code
-  mobile_scanner: ^5.1.1  #helps to scan a qr code and get its data
+  mobile_scanner: ^6.0.2  #helps to scan a qr code and get its data
   shape_of_view_null_safe: ^3.0.0   #helps in creating a custom shape
   modal_bottom_sheet: ^3.0.0  #for a modal bottom sheet
   upi_india: ^3.0.1   #for upi payment integration
+  flex_dropdown: ^0.2.0   #for custom dropdown
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
 flutter:
 

@@ -2,7 +2,6 @@ import 'package:equisplit/constants/colorConstants.dart';
 import 'package:equisplit/models/groupCategories.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 
 import 'fab.dart';
 
