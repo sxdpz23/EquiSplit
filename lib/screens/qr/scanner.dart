@@ -37,14 +37,16 @@ class _QRScannerState extends State<QRScanner> {
 
   _processWhenScanned() async {
     String scannedValue = "";
-    if (!await controller.barcodes.isEmpty)
+    if (!await controller.barcodes.isEmpty) {
       await controller.barcodes.first
           .then((value) => scannedValue = value.barcodes.single.displayValue!);
-    if (scannedValue.isNotEmpty && mounted)
+    }
+    if (scannedValue.isNotEmpty && mounted) {
       HelperFunctions.triggerDialogAfterScanning(
         context,
         scannedValue: scannedValue,
       );
+    }
   }
 
   Widget _darkblock(

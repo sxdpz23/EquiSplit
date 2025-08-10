@@ -28,9 +28,9 @@ class _ScannerButtonsState extends State<ScannerButtons> {
     final BarcodeCapture? barcodes =
         await widget.controller.analyzeImage(image.path);
 
-    if (!context.mounted)
+    if (!context.mounted) {
       return;
-    else if (barcodes != null)
+    } else if (barcodes != null)
       HelperFunctions.triggerDialogAfterScanning(
         context,
         scannedValue: barcodes.barcodes.single.displayValue!,
@@ -40,13 +40,14 @@ class _ScannerButtonsState extends State<ScannerButtons> {
   @override
   void initState() {
     super.initState();
-    if (scannedValue != null)
+    if (scannedValue != null) {
       SchedulerBinding.instance.addPostFrameCallback((_) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text("SCANNED :: $scannedValue"),
           backgroundColor: Colors.red,
         ));
       });
+    }
   }
 
   @override

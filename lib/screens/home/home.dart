@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,38 @@ class _HomeState extends State<Home> {
         : DummyData.groupsSynced2;
   }
 
-  void _settingValues() {
+  void _gettingUserData() {
+    if (FirebaseAuth.instance.currentUser != null) {
+      for (final providerProfile in FirebaseAuth.instance.currentUser!.providerData) {
+        // ID of the provider (google.com, apple.com, etc.)
+        final provider = providerProfile.providerId;
+
+        // UID specific to the provider
+        final uid = providerProfile.uid;
+
+        // Name, email address, and profile photo URL
+        final name = providerProfile.displayName;
+        final emailAddress = providerProfile.email;
+        final profilePhoto = providerProfile.photoURL;
+      }
+    }
+  }
+
+  void _editUserDetails() async {
+    final user = FirebaseAuth.instance.currentUser;
+    await user?.updateDisplayName("Jane Q. User");
+    await user?.updatePhotoURL("https://example.com/jane-q-user/profile.jpg");
+    // await FirebaseAuth.instance.setLanguageCode("en");
+    await user?.verifyBeforeUpdateEmail("janeq@example.com");
+    await FirebaseAuth.instance
+        .sendPasswordResetEmail(email: "user@example.com");
+    // Prompt the user to re-provide their sign-in credentials.
+    // Then, use the credentials to reauthenticate:
+    // await user?.reauthenticateWithCredential(credential);
+    await user?.updatePassword("newPassword");
+  }
+
+  void _settingValues() async {
     filter = CategoryFilters(filters: Filters.values[counter++]);
 
     groups = filter!.mainCategory() == "Groups"
@@ -81,11 +113,12 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButton: GestureDetector(
         onTap: () {
-          if (filterToggle || addToggle)
+          if (filterToggle || addToggle) {
             setState(() {
               addToggle = false;
               filterToggle = false;
             });
+          }
         },
         child: AnimatedContainer(
           duration: Constants.allDuration,
@@ -278,14 +311,15 @@ class _HomeState extends State<Home> {
                               ),
                             );
 
-                            if (index == groups!.length - 1)
+                            if (index == groups!.length - 1) {
                               return Padding(
                                 padding: EdgeInsets.only(
                                     bottom: totalSize.height * 0.2),
                                 child: main,
                               );
-                            else
+                            } else {
                               return main;
+                            }
                           },
                         ),
                       )

@@ -27,8 +27,9 @@ class QrCategoriesData {
   String? _getValueFromKey(String key) {
     String? endValue;
     scannedValue.split('&').forEach((value) {
-      if (value.contains(key))
+      if (value.contains(key)) {
         endValue = value.substring(key.length).replaceAll("%20", ' ');
+      }
     });
     return endValue;
   }
@@ -70,8 +71,9 @@ class QrCategoriesData {
   }
 
   String? id() {
-    if (category == QrCategories.upi || category == QrCategories.unknown)
+    if (category == QrCategories.upi || category == QrCategories.unknown) {
       return null;
+    }
 
     const String idKey = "id=";
     return _getValueFromKey(idKey);

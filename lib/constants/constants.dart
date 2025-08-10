@@ -1,3 +1,4 @@
+import 'package:equisplit/models/fabButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
@@ -15,6 +16,17 @@ abstract class Constants {
   /// Commons
   static const String debugFAB = "FAB pressed :: ";
   static const String debugPIC = "Profile Picture Tapped :: ";
+
+  static List<FabButton> landingFabButtons = [
+    FabButton(title: "Sign Up", namedAction: "/signup"),
+    FabButton(title: "Already a member!", namedAction: "/login"),
+    FabButton(title: "Don't remember the credentials", namedAction: "/forgotPassword")
+  ];
+
+  static List<FabButton> signInFabButtons = [
+    FabButton(title: "All done, Let's go!!"),
+    FabButton(title: "Go Back", namedAction: "back")
+  ];
 
   /// Home Page
   static const String msgOwe = "Overall, you owe ";

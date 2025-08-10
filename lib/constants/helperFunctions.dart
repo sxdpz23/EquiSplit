@@ -86,9 +86,9 @@ abstract class HelperFunctions {
       builder: (context) {
         Size totalSize = MediaQuery.of(context).size;
         QrCategories qrCategory;
-        if (scannedValue.startsWith("upi"))
+        if (scannedValue.startsWith("upi")) {
           qrCategory = QrCategories.upi;
-        else if (scannedValue.startsWith("friend"))
+        } else if (scannedValue.startsWith("friend"))
           qrCategory = QrCategories.friend;
         else if (scannedValue.startsWith("group"))
           qrCategory = QrCategories.group;

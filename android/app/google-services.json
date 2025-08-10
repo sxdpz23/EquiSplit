@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "663715614972",
+    "project_id": "equisplit-sxpz23",
+    "storage_bucket": "equisplit-sxpz23.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663715614972:android:328e0fc57e11acf3af0779",
+        "android_client_info": {
+          "package_name": "dev.sxpz23.equisplit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvvqdtlgqN6uZvpbUFyuUHu3f0uUShlQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
